@@ -3,8 +3,29 @@
 
     <h1>Animals</h1>
 
+    <!-- <form @submit.prevent="addAnimal">
 
-    <table class="table">
+      <div>
+        <label for="species">Species:</label>
+        <input name = 'species' type="text" v-model="newAnimal.species">
+      </div>
+      <div>
+        <label for="name">Name:</label>
+        <input name = 'name' type="text" v-model="newAnimal.name">
+      </div>
+
+      <div>
+        <label for="dateOfBirth">Date of birth:</label>
+        <input name = 'dateOfBirth' type="text" v-model="newAnimal.dateOfBirth">
+      </div>
+      
+      
+
+
+    </form> -->
+
+
+    <table >
       <thead>
         <tr>
           <th>Species</th>
@@ -18,64 +39,81 @@
           <td>{{ animal.species }}</td>
           <td>{{ animal.name }}</td>
           <td>{{ animal.dateOfBirth ? animal.dateOfBirth : 'Nepoznat' }}</td>
+           <td >
+            <button  @click="remove(index)">Remove</button>
+            <button  @click="moveToTop(animal)">Move to top</button>
+          </td>
         </tr>
       </tbody>
     </table>
+
+     
     
   </div>
 </template>
 
 <script>
 export default {
+   
   name: 'HelloWorld',
-  
- 
   data() {
     return {
       
       animals: [
         {
           species: 'Dog',
-          name: '',
-          dateOfBirth: '17-05-2021',
-       
+          name: 'Jack',
+          dateOfBirth: '12-12-2021',
+          
         },
         {
           species: 'Cat',
-          name: 'tom',
+          name: 'Tom',
           dateOfBirth: '05-05-2021',
           
         },
         {
           species: 'Fish',
-          name: 'fish',
+          name: 'Nemo',
           dateOfBirth: '',
-          
+         
         },
-         {
+
+        {
           species: 'Tiger',
-          name: 'SherKhan',
+          name: 'SherKahn',
           dateOfBirth: '',
-          
+         
         },
-          {
+        {
           species: 'Lion',
           name: 'Simba',
           dateOfBirth: '',
-          
-        },
-
+         
+        }
       ],
     };
+  },
+  methods: {
+    remove(index) {
+      const animal = this.animals.indexOf(index);
+      this.animals.splice(animal, 1);
+    },
+    moveToTop(animal) {
+      this.remove(animal);
+      this.animals.unshift(animal);
+    },
+
+
+
+    
+
+    
+   
+    
+    
   }
-
-
-
-
-
-
-
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
