@@ -3,35 +3,31 @@
 
     <h1>Animals</h1>
 
-    <!-- <form @submit.prevent="addAnimal">
-
+    <form >
+    
       <div>
         <label for="species">Species:</label>
-        <input name = 'species' type="text" v-model="newAnimal.species">
+        <input name = 'species' type="text" v-model = "addAnimal.species" >
       </div>
       <div>
         <label for="name">Name:</label>
-        <input name = 'name' type="text" v-model="newAnimal.name">
+        <input name = 'name' type="text"  v-model = "addAnimal.name">
       </div>
-
       <div>
         <label for="dateOfBirth">Date of birth:</label>
-        <input name = 'dateOfBirth' type="text" v-model="newAnimal.dateOfBirth">
+        <input name = 'dateOfBirth' type="text" v-model = "addAnimal.dateOfBirth" >
       </div>
+      <button>Add Animal</button> // nece da se ubaci novi element u niz ?
       
-      
+    </form>
 
-
-    </form> -->
-
-
-    <table >
+   <table >
+     
       <thead>
         <tr>
           <th>Species</th>
           <th>Name</th>
           <th>Date of birth</th>
-          
         </tr>
       </thead>
       <tbody>
@@ -47,8 +43,6 @@
       </tbody>
     </table>
 
-     
-    
   </div>
 </template>
 
@@ -106,12 +100,15 @@ export default {
 
 
 
-    
+    addAnimal() {
+      this.animals.push(this.newAnimal);
+      this.newAnimal = {
+        species: '',
+        name:'',
+        dateOfBirth: null 
+      };
+    },
 
-    
-   
-    
-    
   }
 };
 </script>
